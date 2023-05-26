@@ -141,7 +141,7 @@ write.csv(FA_p_adj_4, file="Strokes_pcrr_Tracts_FA_p.csv")
 ##  I did the same data processing procedure for MD, WayTotal, and Tract Volume as well. 
 
 
-## generate correlation chart for 9 ROIs 
+## generate correlation charts for 9 ROIs 
 library("PerformanceAnalytics")
 ROI1 <- ROI[[1]][,c(6:9,11,16,17,20,25,26)]
 chart.Correlation(ROI1, histogram=TRUE, pch=19)
