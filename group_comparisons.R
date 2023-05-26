@@ -93,5 +93,5 @@ Group_Comp_FA
 write.csv(Group_Comp_FA, file="Group_Comp_FA.csv")
 
 
-##  I did the same data processing procidure for MD, WayTotal, and Tract Volume
+##  I did the same data processing procedure for MD, WayTotal, and Tract Volume
 ## so :) 
