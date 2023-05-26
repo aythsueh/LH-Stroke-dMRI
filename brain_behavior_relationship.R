@@ -154,3 +154,25 @@ length(na.omit(ROI[[1]]$WAIS_WMI))
 length(na.omit(ROI[[1]]$WAIS_PSI))
 length(na.omit(ROI[[1]]$SingleWordComp))
 length(na.omit(ROI[[1]]$PicDesTask))
+
+
+## 2 partial correlation charts
+i=12
+ThickAvg_PSI <- na.omit(ROI[[i]][,c(17,13,9,19)])
+pcor_ThickAvg_PSI <- pcor.test(x=ThickAvg_PSI$ThickAvg1, y=ThickAvg_PSI$WAIS_PSI, 
+                               z=ThickAvg_PSI[,c("Age", "LesionSize1")])
+
+
+Y_resid <- resid(lm(WAIS_PSI ~ Age + LesionSize1, ThickAvg_PSI))
+X_resid <- resid(lm(ThickAvg1 ~ Age + LesionSize1, ThickAvg_PSI))
+
+library(ggplot2)
+m <- ggplot(ThickAvg_PSI, aes(x=X_resid, y=Y_resid)) +
+  geom_point() +
+  labs(x="Cortical Thickness | Age + Lesion Size", y = "Processing Speed | Age + Lesion Size")+
+  scale_size_manual(values=c(15))+
+  theme_classic()
+
+# m +  geom_smooth(se=FALSE, method=lm, formula=y ~ x)
+m +  geom_smooth(method=lm, formula=y ~ x)
+
